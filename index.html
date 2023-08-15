@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,11 @@
     <title>X&O - Classic Tic Tac Toe Game</title>
 
     <link rel="stylesheet" href="main.css">
+    <script src="/index.js" defer></script>
 </head>
+
 <body>
-    
+
     <!-- Header -->
 
     <header>
@@ -25,7 +28,7 @@
             </div>
             <div>
                 <img src="/Resources/white.png" alt="Avatar2">
-                <p id="Player2" class="player-name">Player 2</p>
+                <p id="player2" class="player-name">Player 2</p>
                 <p class="active inactive"></p>
             </div>
         </div>
@@ -45,14 +48,24 @@
         </div>
 
         <div class="instructions-container ">
-            <h4 class="instructions">How to Play</h4>
-            <div>
-                <h4>Objective</h4>
-                <p> The objective is to be the first player to form a line of three of your symbols (either "X" or "O") horizontally, vertically, or diagonally.</p>
+            <h4 id="instructions">How to Play</h4>
+            <div id="instructions-details" class="hide">
+                <div class="with-close">
+                    <h4>Objective</h4>
+                    <span id="close">
+                        <img src="/Resources/close.svg" alt="" class="close">
+                    </span>
+                </div>
+                <p> The objective is to be the first player to form a line of three of your symbols (either "X" or "O")
+                    horizontally, vertically, or diagonally.</p>
                 <h4>Controls</h4>
-                <p>When it is your turn, tap/click on the cell you will like to place your symbol. <br> When the light beneath your name lights up, it is your turn to play</p>
+                <p>When it is your turn, tap/click on the cell you will like to place your symbol. <br> When the light
+                    beneath your name lights up, it is your turn to play</p>
             </div>
         </div>
     </main>
+
+
 </body>
+
 </html>

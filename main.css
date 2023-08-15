@@ -93,14 +93,14 @@ h4 {
     text-decoration: underline;
 }
 
-.instructions-container > div {
+#instructions-details {
     text-align: left;
     border: #9b9b9b 2px solid;
-    padding: 1.5rem 1.5rem .5rem;
+    padding: 1rem 1.5rem .5rem;
     border-radius: 15px;
 }
 
-.instructions {
+#instructions {
     color: rgb(71, 71, 245);
     padding: 1.5rem;
 }
@@ -113,4 +113,25 @@ h4 {
     font-family: hello-grad;
     font-size: 1.4rem;
     padding-bottom: 1rem;
+}
+
+.with-close {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: .5rem;
+}
+
+.close {    
+    width: 1.2rem;
+    height: auto;
+    margin-top: -1rem;
+    margin-right: -1rem;
+}
+
+.show {
+    display: contents;
+}
+
+.hide {
+    display: none;
 }
