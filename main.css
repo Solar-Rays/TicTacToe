@@ -1,16 +1,11 @@
-* {
-    padding: 0;
-    margin: 0;
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 
-@font-face {
-    font-family: blomberg;
-    src: url(/Resources/blomberg-font/Blomberg-8MKKZ.otf);
-}
-
-@font-face {
-    font-family: magic-saturday;
-    src: url(/Resources/magic-saturday-font/MagicSaturday-rg1OA.ttf);
+:root {
+    --cell-size: 100px;
+    /* Setting the size of the X and O marks on the board  */
+    --mark-size: calc(var(--cell-size) * .9);
 }
 
 @font-face {
@@ -19,119 +14,175 @@
 }
 
 body {
-    text-align: center;
-}
-header {
-    background-color: #D9D9D9;
-}
-
-header img {
-    max-width: 100px;
-    width: 25%;
-    height: auto;
-}
-
-main {
-    max-width: 600px;
-    margin: auto;
-    padding: 2rem;
-}
-
-.player-info {
-    display: flex;
-    justify-content: space-between;
-    padding: 5%;
-}
-
-.player-info img {
-    width: 60%;
-    max-width: 100px;
-    height: auto;
-    border: 1px solid grey;
-    border-radius: 5px;
-    margin: auto;
-}
-
-.player-name {
-    font-family: blomberg;
-    margin: .5rem;
-}
-
-.active {
-    width: 40px;
-    height: 5px;
-    background-color: greenyellow;
-    margin: auto;
-}
-
-.inactive {
-    visibility: hidden;
-}
-
-.board-container {
-    max-width: 350px;
-    margin: auto;
-    padding: 8% 5%;
+    margin: 0;
+    /* background-color: #242424; */
 }
 
 .board {
+    width: 100vw;
+    height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    background-color: grey;
-    gap: 3px;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
 }
 
-.board p {
-    width: 1fr;
-    height: 100px;
-    background-color: white;
-    text-align: center;
-}
-
-h4 {    
-    font-family: blomberg;
-    text-decoration: underline;
-}
-
-#instructions-details {
-    text-align: left;
-    border: #9b9b9b 2px solid;
-    padding: 1rem 1.5rem .5rem;
-    border-radius: 15px;
-}
-
-#instructions {
-    color: rgb(71, 71, 245);
-    padding: 1.5rem;
-}
-
-.instructions-container > div > h4 {
-    padding-bottom: 1rem;
-}
-
-.instructions-container p {
-    font-family: hello-grad;
-    font-size: 1.4rem;
-    padding-bottom: 1rem;
-}
-
-.with-close {
+.cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border: 1px solid black;
     display: flex;
-    justify-content: space-between;
-    padding-bottom: .5rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
 }
 
-.close {    
-    width: 1.2rem;
-    height: auto;
-    margin-top: -1rem;
-    margin-right: -1rem;
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none;
 }
 
-.show {
-    display: contents;
+.cell:first-child,
+.cell:nth-child(4),
+.cell:nth-child(7) {
+    border-left: none;
 }
 
-.hide {
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9) {
+    border-right: none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9) {
+    border-bottom: none;
+}
+
+.cell.x,
+.cell.o {
+    cursor: not-allowed;
+}
+
+.cell.x::before,
+.cell.x::after,
+.cell.o::before {    
+    background-color: #242424;
+}
+
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after,
+.board.o .cell:not(.x):not(.o):hover::before {
+    background-color: lightgrey;
+}
+
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after {
+    content: '';
+    width: calc(var(--mark-size) * .15);
+    height: var(--mark-size);
+    position: absolute;
+}
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.o):hover::before {
+    transform: rotate(45deg);
+}
+
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::after {
+    transform: rotate(-45deg);
+}
+
+.cell.o::before,
+.cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::before,
+.board.o .cell:not(.x):not(.o):hover::after {
+    content: '';
+    border-radius: 50%;
+    position: absolute;
+}
+
+.cell.o::before,
+.board.o .cell:not(.x):not(.o):hover::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
+}
+
+.cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::after {
+    width: calc(var(--mark-size)* .7);
+    height: calc(var(--mark-size)* .7);
+    background-color: white;
+}
+
+.winning-message {
+    font-family: hello-grad, Arial, Helvetica, sans-serif;
+    font-size: 5rem;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .8);
+    color: #fff;
     display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem 0;    
+}
+
+a {
+    text-decoration: none;
+}
+
+.home-btn {
+    background-color: transparent;
+    color: #fff;
+    border: #fff;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-btn:hover {
+    text-shadow: 2px 2px 5px rgba(255, 0, 0, .5);
+}
+
+.restart-btn {
+    font-family: hello-grad, Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: .15rem;
+    padding: .5rem .9rem;
+    border-radius: 7px;
+}
+
+.restart-btn:hover {
+    background-color: #242424;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: .55rem .95rem;
+    box-shadow: 1px 1px 5px rgba(0, 0, 255, .5);
+}
+
+.winning-message.show {
+    display: flex;
 }
