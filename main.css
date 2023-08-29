@@ -13,6 +13,16 @@
     src: url(/Resources/hello-graduation-sans-font/HelloGraduationSans-d9enl.ttf);
 }
 
+@font-face {
+    font-family: blomberg;
+    src: url(/Resources/blomberg-font/Blomberg-8MKKZ.otf);
+}
+
+@font-face {
+    font-family: magic-saturday;
+    src: url(/Resources/magic-saturday-font/MagicSaturday-rg1OA.ttf);
+}
+
 header {
     background-color: #D9D9D9;
 
