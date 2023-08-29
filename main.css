@@ -13,14 +13,64 @@
     src: url(/Resources/hello-graduation-sans-font/HelloGraduationSans-d9enl.ttf);
 }
 
+header {
+    background-color: #D9D9D9;
+
+}
+
+header img {
+    max-width: 100px;
+    width: 25%;
+    height: auto;
+}
+
 body {
     margin: 0;
+    text-align: center;
     /* background-color: #242424; */
 }
 
+main {
+    max-width: 600px;
+    margin: auto;
+    padding: 2rem;
+}
+
+.player-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 5%;
+}
+
+.player-info img {
+    width: 60%;
+    max-width: 100px;
+    height: auto;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.player-name {
+    font-family: blomberg;
+    margin: .5rem;
+}
+
+.active {
+    width: 40px;
+    height: 5px;
+    background-color: greenyellow;
+    margin: auto;
+}
+
+.inactive {
+    visibility: hidden;
+}
+
 .board {
-    width: 100vw;
-    height: 100vh;
+    /* width: 100vw;
+    height: 100vh; */
+    margin: 2.5rem 0;
     display: grid;
     justify-content: center;
     align-content: center;
@@ -121,6 +171,52 @@ body {
     width: calc(var(--mark-size)* .7);
     height: calc(var(--mark-size)* .7);
     background-color: white;
+}
+
+h4 {    
+    font-family: blomberg;
+    text-decoration: underline;
+}
+
+.instructions-details {
+    text-align: left;
+    border: #9b9b9b 2px solid;
+    padding: 1rem 1.5rem .5rem;
+    border-radius: 15px;
+}
+
+.instructions {
+    color: rgb(71, 71, 245);
+    padding: 1.5rem;
+    cursor: pointer;
+}
+
+.instructions-container > div > h4 {
+    padding-bottom: 1rem;
+}
+
+.instructions-container p {
+    font-family: hello-grad;
+    font-size: 1.4rem;
+    padding-bottom: 1rem;
+}
+
+.with-close {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: .5rem;
+}
+
+.close {    
+    width: 1.2rem;
+    height: auto;
+    margin-top: -1rem;
+    margin-right: -1rem;
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
 }
 
 .winning-message {

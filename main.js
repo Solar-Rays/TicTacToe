@@ -9,7 +9,10 @@ const WINNING_COMBO = [
 const WINNING_MESSAGE = document.getElementById('winning-message')
 const WINNING_MESSAGE_TEXT = document.querySelector('[data-winning-message-text]')
 const RESTART_BTN = document.getElementById('restart-btn')
-
+const HOW_TO = document.getElementById('instructions')
+const CLOSE = document.getElementById('close')
+const PLAYER_ONE_STATE = document.getElementById('player1-state')
+const PLAYER_TWO_STATE = document.getElementById('player2-state')
 
 
 
@@ -19,6 +22,8 @@ RESTART_BTN.addEventListener('click', startGame)
 
 function startGame() {
     oTurn = false
+    PLAYER_ONE_STATE.classList.add('active')
+    PLAYER_TWO_STATE.classList.remove('active')
     CELLELEMENTS.forEach(
         function (cell) {
             cell.classList.remove(X_CLASS)
@@ -88,6 +93,8 @@ function currentPlayer() {
 
 function swapTurns() {
     oTurn = !oTurn
+    PLAYER_ONE_STATE.classList.toggle('active')
+    PLAYER_TWO_STATE.classList.toggle('active')
 }
 
 function boardHoverState() {
@@ -115,3 +122,20 @@ function checkWin(currentClass) {
         }
     )
 }
+
+HOW_TO.addEventListener('click', toggleActive);
+
+CLOSE.addEventListener('click', toggleInactive);
+
+function toggleActive() {
+    var element = document.getElementById('instructions-details');
+    // element.classList.toggle('show');
+    element.classList.toggle('hide');
+}
+
+function toggleInactive() {
+    var element = document.getElementById('instructions-details');
+    element.classList.add('hide');
+}
+
+
